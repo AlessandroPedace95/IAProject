@@ -1,0 +1,43 @@
+positionGood(Y,X) | positionBad(Y,X):- position(Y,X).
+
+:- not #count{Y, X : positionGood(Y,X)} = 1.
+
+adjSphere(Y,X,Y1,X1):- sphere(Y,X,_), sphere(Y1,X1,_), Y = Y1+1, X = X1.
+adjSphere(Y,X,Y1,X1):- sphere(Y,X,_), sphere(Y1,X1,_), Y = Y1, X = X1+1.
+adjSphere(Y,X,Y1,X1):- sphere(Y,X,_), sphere(Y1,X1,_), Y = Y1+1, X = X1+1.
+adjSphere(Y,X,Y1,X1):- adjSphere(Y1,X1,Y,X).
+
+adjSphereColor(Y,X,Y1,X1,C):- sphere(Y,X,C), sphere(Y1,X1,C), adjSphere(Y,X,Y1,X1).
+adjSphereColor(Y,X,Y1,X1,C):- adjSphereColor(Y1,X1,Y,X,C).
+
+
+adjPositionSphere(Y,X,Y1,X1):- sphere(Y,X,_), position(Y1,X1), Y = Y1+1, X = X1.
+adjPositionSphere(Y,X,Y1,X1):- sphere(Y,X,_), position(Y1,X1), Y = Y1, X = X1+1.
+adjPositionSphere(Y,X,Y1,X1):- sphere(Y,X,_), position(Y1,X1), Y = Y1-1, X = X1.
+adjPositionSphere(Y,X,Y1,X1):- sphere(Y,X,_), position(Y1,X1), Y = Y1, X = X1-1.
+adjPositionSphere(Y,X,Y1,X1):- adjPositionSphere(Y1,X1,Y,X).
+
+:- positionGood(Y,X), #count{Y1,X1: adjPositionSphere(Y1,X1,Y,X)} > 3.
+:- positionGood(Y,X), #count{Y1,X1: adjPositionSphere(Y1,X1,Y,X)} > 2, X = 7.
+:- positionGood(Y,X), #count{Y1,X1: adjPositionSphere(Y1,X1,Y,X)} > 2, X = 0.
+:- positionGood(Y,X), #count{Y1,X1: adjPositionSphere(Y1,X1,Y,X)} > 2, Y = 0.
+:- positionGood(Y,X), #count{Y1,X1: adjPositionSphere(Y1,X1,Y,X)} > 1, Y = 0, X = 7.
+:- positionGood(Y,X), #count{Y1,X1: adjPositionSphere(Y1,X1,Y,X)} > 1, Y = 0, X = 0.
+
+
+adjPSC(Y,X,Y1,X1,C):- currentSphere(C), sphere(Y,X,C), position(Y1,X1), adjPositionSphere(Y,X,Y1,X1).
+adjPSC(Y,X,Y1,X1,C):- adjPSC(Y1,X1,Y,X,C).
+
+
+adj2SP(Y,X,Y1,X1,PY,PX,C) :- sphere(Y,X,C), sphere(Y1,X1,C), position(PY,PX), adjPSC(Y,X,PY,PX,C), adjSphereColor(Y,X,Y1,X1,C), currentSphere(C).  
+adj2SP(Y,X,Y1,X1,PY,PX,C) :- sphere(Y,X,C), sphere(Y1,X1,C), position(PY,PX), adjPSC(Y1,X1,PY,PX,C), adjSphereColor(Y,X,Y1,X1,C), currentSphere(C).  
+adj2SP(Y,X,Y1,X1,PY,PX,C):- adj2SP(Y1,X1,Y,X,PY,PX,C).
+
+%adj2SP(Y,X,Y1,X1,PY,PX,C) :- currentSphere(C), sphere(Y,X,C), sphere(Y1,X1,C), adjSphereColor(Y,X,Y1,X1,C), position(PY,PX), adjPositionSphere(Y,X,PY,PX).
+%adj2spherePos(Y,X,Y1,X1,PY,PX,C) :- currentSphere(C), sphere(Y,X,C), sphere(Y1,X1,C), adjSphereColor(Y,X,Y1,X1,C), position(PY,PX), adjPositionSphere(Y1,X1,PY,PX).
+
+
+:~ currentSphere(C), positionGood(Y,X), sphere(Y1, X1, C), not adjPSC(Y, X, Y1, X1, C). [1:2]
+:~ currentSphere(C),  sphere(Y,X,C), sphere(Y1,X1,C), position(PY,PX), not adj2SP(Y,X,Y1,X1,PY,PX,C). [1:1]
+
+
