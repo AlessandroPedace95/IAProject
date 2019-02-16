@@ -193,7 +193,7 @@ public class StagePlay implements Stage
 		if(this.state == State.Playing) {
 			
 			
-			this.cannon.target(DlvRun.getInstance().getPixelX()-25f, DlvRun.getInstance().getPixelY());
+			this.cannon.target(DlvRun.getInstance().getPixelX(), DlvRun.getInstance().getPixelY());
 //			Timer.schedule(new Timer.Task() {
 //				
 //				@Override

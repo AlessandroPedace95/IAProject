@@ -99,6 +99,10 @@ public class DlvRun {
 
 			for(int i = 0; i< a.getAnswerSet().size(); i++) {
 				String atom = a.getAnswerSet().get(i).toString();
+//				if(atom.substring(0, 6).equals("adj2SP")) {
+//					System.out.println(atom);
+//				}
+				
 				if(atom.substring(0, 12).equals("positionGood")) {
 					System.out.println(atom);
 					positionGoodX = Integer.parseInt(atom.substring(15,16));

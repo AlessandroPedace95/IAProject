@@ -15,6 +15,10 @@ adjPositionSphere(Y,X,Y1,X1):- sphere(Y,X,_), position(Y1,X1), Y = Y1+1, X = X1.
 adjPositionSphere(Y,X,Y1,X1):- sphere(Y,X,_), position(Y1,X1), Y = Y1, X = X1+1.
 adjPositionSphere(Y,X,Y1,X1):- sphere(Y,X,_), position(Y1,X1), Y = Y1-1, X = X1.
 adjPositionSphere(Y,X,Y1,X1):- sphere(Y,X,_), position(Y1,X1), Y = Y1, X = X1-1.
+adjPositionSphere(Y,X,Y1,X1):- sphere(Y,X,_), position(Y1,X1), Y = Y1+2, X = X1.
+adjPositionSphere(Y,X,Y1,X1):- sphere(Y,X,_), position(Y1,X1), Y = Y1, X = X1+2.
+adjPositionSphere(Y,X,Y1,X1):- sphere(Y,X,_), position(Y1,X1), Y = Y1-2, X = X1.
+adjPositionSphere(Y,X,Y1,X1):- sphere(Y,X,_), position(Y1,X1), Y = Y1, X = X1-2.
 adjPositionSphere(Y,X,Y1,X1):- adjPositionSphere(Y1,X1,Y,X).
 
 :- positionGood(Y,X), #count{Y1,X1: adjPositionSphere(Y1,X1,Y,X)} > 3.
