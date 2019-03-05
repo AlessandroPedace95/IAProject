@@ -26,16 +26,6 @@ import com.sfo.games.puzzlebobble.entities.Sphere;
 import com.sfo.games.puzzlebobble.entities.Sphere.Colors;
 import com.sfo.games.puzzlebobble.helpers.InputHelper;
 
-import it.unical.mat.embasp.base.InputProgram;
-import it.unical.mat.embasp.base.Output;
-import it.unical.mat.embasp.languages.Id;
-import it.unical.mat.embasp.languages.asp.ASPInputProgram;
-import it.unical.mat.embasp.languages.asp.AnswerSet;
-import it.unical.mat.embasp.languages.asp.AnswerSets;
-import it.unical.mat.embasp.platforms.desktop.DesktopHandler;
-import it.unical.mat.embasp.specializations.dlv.desktop.DLVDesktopService;
-
-
 public class StagePlay implements Stage 
 {
 	public static int LEFT_BORDER 		= 40;

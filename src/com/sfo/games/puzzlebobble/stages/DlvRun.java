@@ -48,7 +48,7 @@ public class DlvRun {
 
 	public void setPixelX(int x) {
 		if(pixelY != -120)
-			this.pixelX = (float) ((x * Sphere.Size) + StagePlay.LEFT_BORDER + pixelY % 2 * (Sphere.Size / 2)) + Sphere.Size / 2.0F;
+			this.pixelX = (float) ((x * Sphere.Size) + StagePlay.LEFT_BORDER + pixelY % 2 * (Sphere.Size / 2)) + Sphere.Size / 2.0F ;
 	}
 
 
@@ -99,10 +99,10 @@ public class DlvRun {
 
 			for(int i = 0; i< a.getAnswerSet().size(); i++) {
 				String atom = a.getAnswerSet().get(i).toString();
-//				if(atom.substring(0, 6).equals("adj2SP")) {
-//					System.out.println(atom);
-//				}
-				
+				//				if(atom.substring(0, 6).equals("adj2SP")) {
+				//					System.out.println(atom);
+				//				}
+
 				if(atom.substring(0, 12).equals("positionGood")) {
 					System.out.println(atom);
 					positionGoodX = Integer.parseInt(atom.substring(15,16));
@@ -157,9 +157,34 @@ public class DlvRun {
 		System.out.println(handler.getInputProgram(0).getPrograms());
 	}
 
+
+
+
 	public  List<Vector2> computeReached (List<Sphere> present){
 		List<Vector2> freeAllPosition = new ArrayList<>();
 		List<Vector2> allPosition =  new ArrayList<>();
+		List<Vector2> posRaggiungibili = new ArrayList<>();
+		
+		int [][] matrix = new int[10][8];
+
+		for(int i = 0; i < 9; i++) {	
+			for(int j = 0; j < 8; j++) {
+				matrix[i][j] = 3;
+			}
+		}
+		//ultima riga starndard 
+		for(int i = 0; i < 8; i++) 	
+			if(i == 4)
+				matrix[9][i] = 2; //destination
+			else 
+				matrix[9][i] = 0;  //wall
+
+
+
+		//aggiungo le sfere
+		for(Sphere sphere : present)
+			matrix[(int) sphere.YsuMatrice()][(int) sphere.XsuMatrice()] = 0;
+
 
 
 		for(int i = 0; i <= 7; i++) {	
@@ -173,7 +198,7 @@ public class DlvRun {
 				}
 
 
-			}
+			}	
 		}
 
 		for(Vector2 position : allPosition) {
@@ -206,7 +231,41 @@ public class DlvRun {
 		System.out.println("Size ALLFREEPOSITION: " + freeAllPosition.size());
 		System.out.println("Size ALLPOSITION: "+allPosition.size());
 
-		return freeAllPosition;
+		
+		Path cammino = new Path();
+		
+		for(Vector2 position : freeAllPosition) {
+			matrix[(int)position.x][(int)position.y] = 1;
+			
+			
+			System.out.println("MATRICE---------------------------");
+			System.out.println();
+			
+			for(int i = 0; i < 10; i++) {	
+				for(int j = 0; j < 8; j++) {
+					//System.out.print(matrix[i][j]+", ");
+				}
+				//System.out.println();
+			}
+
+			System.out.println("Controllo la posizione: "+position.toString());
+			if(cammino.isPath(matrix, 10, 8)){
+				posRaggiungibili.add(position);
+				System.out.println("posizione inserita: "+position.toString());
+			}	
+
+			matrix[(int)position.x][(int)position.y] = 3;
+			
+
+		}
+			
+		
+		System.out.println("Size POS RAGGIUNGIBILI: "+posRaggiungibili.size());
+
+		for(Vector2 position : posRaggiungibili)
+			System.out.println("posRaggiungibili: "+position.toString());
+			
+		return posRaggiungibili;
 	}
 
 

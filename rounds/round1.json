@@ -26,7 +26,7 @@
 		{ color: Green, 	gridPosition: { x: 4.0, y: -2.0 } },
 		{ color: Green, 	gridPosition: { x: 5.0, y: -2.0 } },
 		{ color: Yellow, 	gridPosition: { x: 6.0, y: -2.0 } },
-		{ color: Yellow, 	gridPosition: { x: 15.5, y: -2.0 } },
+		{ color: Yellow, 	gridPosition: { x: 7.0, y: -2.0 } },
 		
 		{ color: Red, 	gridPosition: { x: 1.0, y: -3.0 } },
 		{ color: Blue, 	gridPosition: { x: 2.0, y: -3.0 } },
