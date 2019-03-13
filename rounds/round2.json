@@ -1,9 +1,9 @@
 {
-	initialColor: Green,
+	initialColor: Yellow,
 	spheres:
 	[
 		{ color: Yellow, 	gridPosition: { x: 1.0, y:  0.0 } },
-		{ color: Yellow, 	gridPosition: { x: 3.0, y:  0.0 } },
+		{ color: White, 	gridPosition: { x: 3.0, y:  0.0 } },
 		{ color: Yellow, 	gridPosition: { x: 5.0, y:  0.0 } },
 		{ color: White, 	gridPosition: { x: 7.0, y:  0.0 } },
 		

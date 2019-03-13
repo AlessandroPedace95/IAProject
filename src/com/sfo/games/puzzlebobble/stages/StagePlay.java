@@ -40,7 +40,7 @@ public class StagePlay implements Stage
 	private static int POINTS_PER_SPHERE = 10;
 
 	private State state;
-	private int round = 4;
+	private int round = 1;
 	private RoundLoader loader;
 	private Sprite background;
 	private Sprite deadend;
@@ -354,7 +354,7 @@ public class StagePlay implements Stage
 
 	private void nextSphere()
 	{
-		this.state = State.Beginning;
+		//this.state = State.Beginning;
 		this.nextSphere.setPosition((Game.GAME_WIDTH / 2) - (this.currentSphere.getWidth() / 2), 65);
 		this.currentSphere = this.nextSphere;
 		this.newSphere();
