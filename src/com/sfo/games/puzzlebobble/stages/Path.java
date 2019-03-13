@@ -102,34 +102,7 @@ class Path {
 		return false; // no path has been found 
 	} 
 
-	// driver program to check above function 
 
-	//public static void main (String[] args) { 
-
-		/*
-		 * A value of cell 1 means Source.
-	   A value of cell 2 means Destination.
-	   A value of cell 3 means Blank cell.
-       A value of cell 0 means Blank Wall.	
-		 */
-
-	/*	int matrix[][] = {{3, 0, 3, 0, 1, 0, 3, 0}, 
-				{3, 0, 3, 0, 3, 0, 3, 0}, 
-				{0, 3, 0, 3, 0, 3, 0, 3}, 
-				{3, 3, 0, 3, 0, 3, 0, 3},
-				{3, 0, 3, 0, 3, 0, 3, 3},
-				{3, 3, 3, 3, 3, 3, 3, 3},
-				{3, 3, 3, 3, 3, 3, 3, 3},
-				{3, 3, 3, 3, 3, 3, 3, 3},
-				{3, 3, 3, 3, 3, 3, 3, 3},
-				{0, 0, 0, 0, 2, 0, 0, 0},
-	*/
-
-	//	}; 
-
-		//isPath(matrix, 10, 8);			 // calling isPath method 
-	//} 
 } 
 
-/* This code is contributed by Madhu Priya */
 
