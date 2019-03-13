@@ -40,7 +40,7 @@ public class StagePlay implements Stage
 	private static int POINTS_PER_SPHERE = 10;
 
 	private State state;
-	private int round = 1;
+	private int round = 4;
 	private RoundLoader loader;
 	private Sprite background;
 	private Sprite deadend;
