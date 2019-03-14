@@ -184,14 +184,7 @@ public class StagePlay implements Stage
 			
 			
 			this.cannon.target(DlvRun.getInstance().getPixelX(), DlvRun.getInstance().getPixelY());
-//			Timer.schedule(new Timer.Task() {
-//				
-//				@Override
-//				public void run() {
-//					cannon.shoot(currentSphere);
-//				}
-//			},10);
-//			
+		
 			
 		}
 		cannon.shoot(currentSphere);

@@ -98,6 +98,19 @@ public class Cannon
 		float ax = this.arrow.getX() + this.arrow.getOriginX();
 		float ay = this.arrow.getY() + this.arrow.getOriginY();
 		this.targetAngle = ((float)MathHelper.angle(ax, ay, x, y));
+		//arrow.setRotation(targetAngle);
+	}
+	
+	public void targetFinale(float x, float y)
+	{
+		
+		this.targetVector.x = x;
+		this.targetVector.y = y;
+
+		float ax = this.arrow.getX() + this.arrow.getOriginX();
+		float ay = this.arrow.getY() + this.arrow.getOriginY();
+		this.targetAngle = ((float)MathHelper.angle(ax, ay, x, y));
+		
 	}
 
 	public void update(float delta)
